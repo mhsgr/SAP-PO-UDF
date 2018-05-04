@@ -101,6 +101,11 @@ public class params {
 	    System.out.println ();
 	    
 	    System.out.println ("Get (MessageId):              " + getInputHeader("MessageId", container));
+	    System.out.println ();
+	    
+	    System.out.println ("Dynamic Configuration:        " + getDynamicConfiguration("Filename", "http://sap.com/xi/XI/System/File", container));
+	    System.out.println ("Set Dynamic Configuration:    " + setDynamicConfiguration("Filename", "http://sap.com/xi/XI/System/File", "/test/dynamic", container));
+	    System.out.println ("Dynamic Configuration:        " + getDynamicConfiguration("Filename", "http://sap.com/xi/XI/System/File", container));
 	}
 	
 	
@@ -122,8 +127,23 @@ public class params {
 		return (String) container.getInputHeader().getConversationId();
 	}
 	
+	public static String getDynamicConfiguration (String name, String namespace, Container container) throws StreamTransformationException {
+		DynamicConfiguration dc = (DynamicConfiguration) container.getInputHeader().get(StreamTransformationConstants.DYNAMIC_CONFIGURATION);
+
+		if (dc == null) {
+			throw new StreamTransformationException ("Dynamic configuration not available.");
+		}
+		
+		DynamicConfigurationKey key  = DynamicConfigurationKey.create(namespace, name);
+		return dc.get(key);
+	}
+	
 	public static String getInputHeader (String name, Container container) throws StreamTransformationException {
 		return (String) container.getInputHeader().get(name);
+	}
+	
+	public static String getInputParameter (String name, Container container) throws StreamTransformationException {
+		return 	container.getInputParameters().getString(name);
 	}
 	
 	public static String getInterface (Container container) throws StreamTransformationException {
@@ -208,5 +228,18 @@ public class params {
 
 	public static String getVersionMinor (Container container) throws StreamTransformationException {
 		return (String) container.getInputHeader().getVersionMinor();
+	}
+	
+	public static String setDynamicConfiguration (String name, String namespace, String value, Container container) throws StreamTransformationException {
+		DynamicConfiguration dc = (DynamicConfiguration) container.getInputHeader().get(StreamTransformationConstants.DYNAMIC_CONFIGURATION);
+
+		if (dc == null) {
+			throw new StreamTransformationException ("Dynamic configuration not available.");
+		}
+		
+		DynamicConfigurationKey key  = DynamicConfigurationKey.create(namespace, name);
+		dc.put(key, value);
+		
+		return value;
 	}
 }
