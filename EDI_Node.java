@@ -64,4 +64,22 @@ public class node {
 			result.addSuppress();
 		}
 	}
+	
+	
+	
+	/*
+	 * Remove SUPPRESS from queue
+	 *
+	 * (All values of a context)
+	 */
+	
+	public void removeSUPRESS(String[] values, ResultList result, Container container) throws StreamTransformationException {
+		if ((values != null) && (values.length > 0)) {
+			for (String value: values) {
+				if (! value.equals(ResultList.SUPPRESS)) {
+					result.addValue(value);
+				}
+			}
+		}
+	}
 }
