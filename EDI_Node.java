@@ -1,6 +1,7 @@
 package com.havemester.po.EDI_Node;
 
 import com.havemester.po.mapping.test.ContainerImpl;
+import com.havemester.po.mapping.test.TraceImpl;
 import com.sap.aii.mapping.api.StreamTransformationException;
 import com.sap.aii.mappingtool.tf.rt.ResultList;
 import com.sap.aii.mappingtool.tf.rt.ResultListImpl;
@@ -13,16 +14,26 @@ public class node {
 		
 		// initialize container
 		Container container = (Container) new ContainerImpl();
+		TraceImpl trace = (TraceImpl) container.getTrace();
 
-		// initialize result
-		ResultList result = new ResultListImpl();
-
-		
 		System.out.println("passValue  test: " + node.passValue("test", container));
 		System.out.println("clearValue test: " + node.clearValue("test", container));
+					
+		{
+			// initialize result
+			ResultList result = new ResultListImpl();
 				
-		node.getContextValue(new String[] { "1", "2" } , new int[] { 3 }, result, container);
-		System.out.println("getContextValue: " +  ((ResultListImpl) result).get(0));
+			node.getContextValue(new String[] { "1", "2" } , new int[] { 3 }, result, container);
+			System.out.println("getContextValue: " +  ((ResultListImpl) result).get(0));
+		}		
+		
+		{
+			// initialize result
+			ResultList result = new ResultListImpl();
+
+			node.removeSUPRESS(new String[] { ResultList.SUPPRESS,  "Value 1",  "Value 2", ResultList.SUPPRESS }, result, container);
+			trace.result("removeSUPPRESS: ", (ResultListImpl) result);
+		}
 	}
 
 	
