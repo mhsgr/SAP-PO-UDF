@@ -1,10 +1,10 @@
-package com.havemester.po.EDI_NRO;
+package com.havemester.sap.po.EDI;
 
-import com.havemester.po.mapping.test.ContainerImpl;
+import com.havemester.sap.po.mapping.test.ContainerImpl;
 import com.sap.aii.mapping.api.StreamTransformationException;
 import com.sap.aii.mappingtool.tf7.rt.Container;
 
-public class NRO {
+public class EDI_NRO {
 
 	public static void main(String[] args) throws Exception {
 		
