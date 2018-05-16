@@ -1,13 +1,13 @@
-package com.havemester.po.EDI_Name;
+package com.havemester.sap.po.EDI;
 
-import com.havemester.po.mapping.test.ContainerImpl;
+import com.havemester.sap.po.mapping.test.ContainerImpl;
 import com.sap.aii.mapping.api.AbstractTrace;
 import com.sap.aii.mapping.api.StreamTransformationException;
 import com.sap.aii.mappingtool.tf.rt.ResultList;
 import com.sap.aii.mappingtool.tf.rt.ResultListImpl;
 import com.sap.aii.mappingtool.tf7.rt.Container;
 
-public class splitName {
+public class EDI_Name {
 
 	public static void main(String[] args) throws Exception {
 		ResultList result1 = new ResultListImpl();
