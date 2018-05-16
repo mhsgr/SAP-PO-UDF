@@ -7,20 +7,24 @@ import com.sap.aii.mappingtool.tf7.rt.Container;
 public class EDI_NRO {
 
 	public static void main(String[] args) throws Exception {
+		// initialize instance
+		EDI_NRO nro = new EDI_NRO();
 		
 		// initialize container
 		Container container = (Container) new ContainerImpl();
 		
-		System.out.println ("NRO getNext:     " + getNext("EDIFACT_DESADV", container));
-		System.out.println ("NRO getPrevious: " + getPrevious("EDIFACT_DESADV", container));
+		System.out.println ("NRO getNext:           " + nro.getNext("EDIFACT_DESADV", container));
+		System.out.println ("NRO getPrevious:       " + nro.getPrevious("EDIFACT_DESADV", container));
+		System.out.println ("NRO getSegmentCounter: " + nro.getSegmentCounter(container));
 	}
+	
 	
 	
 	/*
 	 * Get next sequence number from number range object <name>
 	 */
 	
-	public static String getNext(String name, Container container) throws StreamTransformationException {
+	public String getNext(String name, Container container) throws StreamTransformationException {
 		return ("$B2B_UEBNR" + name.trim() + "$B2B_END_UEBNR");
 	}
 	
@@ -30,7 +34,17 @@ public class EDI_NRO {
 	 * Get previous sequence number from number range object <name>
 	 */
 	
-	public static String getPrevious(String name, Container container) throws StreamTransformationException {
+	public String getPrevious(String name, Container container) throws StreamTransformationException {
 		return ("$B2B_UEBNR_BEFORE" + name.trim() + "$B2B_END_UEBNR");
+	}
+	
+	
+	
+	/*
+	 * Return EDIFACT segment counter
+	 */
+	
+	public String getSegmentCounter (Container container) throws StreamTransformationException {
+		return "$B2B_SEG_COUNTER";
 	}
 }
