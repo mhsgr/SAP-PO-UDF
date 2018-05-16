@@ -1,14 +1,13 @@
-package com.havemester.po.EDI_Params;
+package com.havemester.sap.po.EDI;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.havemester.po.mapping.test.ContainerImpl;
-import com.havemester.po.mapping.test.InputHeaderImpl;
-import com.havemester.po.mapping.test.InputParametersImpl;
-import com.havemester.po.mapping.test.OutputHeaderImpl;
-import com.havemester.po.mapping.test.OutputParametersImpl;
-
+import com.havemester.sap.po.mapping.test.ContainerImpl;
+import com.havemester.sap.po.mapping.test.InputHeaderImpl;
+import com.havemester.sap.po.mapping.test.InputParametersImpl;
+import com.havemester.sap.po.mapping.test.OutputHeaderImpl;
+import com.havemester.sap.po.mapping.test.OutputParametersImpl;
 import com.sap.aii.mapping.api.DynamicConfiguration;
 import com.sap.aii.mapping.api.DynamicConfigurationKey;
 import com.sap.aii.mapping.api.InputHeader;
@@ -21,7 +20,7 @@ import com.sap.aii.mappingtool.tf7.rt.Container;
 
 
 
-public class params {
+public class EDI_Params {
 
 	public static void main(String[] args) throws Exception {
 		
