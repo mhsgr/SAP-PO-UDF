@@ -25,6 +25,8 @@ public class EDI_String {
 		System.out.println("removeLeadingZeros " + "0000000000" + "      : " + str.removeLeadingZeros("0000000000", container));
 		System.out.println("subString          " + test + " (4,4): " + str.subString(test, 4, 4, container));
 		System.out.println("subStringP         " + test + " (8,4): " + str.subStringP(test, 8, 4, container));
+		System.out.println("subString1         " + test + " (4)  : " + str.subString1(test, 4, container));
+		System.out.println("subString1P        " + test + " (8)  : " + str.subString1P(test, 8, container));
 		System.out.println("trimLeft           " + test + " (8)  : " + str.trimLeft(test, 8, container));
 		System.out.println("trimLeftP          " + test + " (4)  : " + str.trimLeftP(test, 4, container));
 		System.out.println("trimRight          " + test + " (8)  : " + str.trimRight(test, 8, container));
@@ -110,13 +112,38 @@ public class EDI_String {
 	}
 
 
-
+	
 	/*
 	 * Return substring without exception if string is too short
 	 */
 	
 	public String subStringP(String str, int start, int length, Container container) throws StreamTransformationException {
 		return subString(str, start, length, container);
+	}
+
+	
+	
+	/*
+	 * Return substring starting at position without exception if string is too short
+	 */
+	
+	public String subString1(String str, int start, Container container) throws StreamTransformationException {
+		int len = str.length();
+
+		if (start > len) {
+			return "";
+		}
+
+		return (str.substring(start));
+	}
+
+
+	/*
+	 * Return substring starting at position without exception if string is too short
+	 */
+	
+	public String subString1P(String str, int start, Container container) throws StreamTransformationException {
+		return subString1(str, start, container);
 	}
 
 	
