@@ -1,16 +1,16 @@
-package com.havemester.po.EDI_String;
+package com.havemester.sap.po.EDI;
 
-import com.havemester.po.mapping.test.ContainerImpl;
+import com.havemester.sap.po.mapping.test.ContainerImpl;
 import com.sap.aii.mapping.api.StreamTransformationException;
 import com.sap.aii.mappingtool.tf7.rt.Container;
 
 
 
-public class string {
+public class EDI_String {
 
 	public static void main(String[] args) throws Exception {
 		// initialize instance
-		string str = new string();
+		EDI_String str = new EDI_String();
 		
 		// initialize container
 		Container container = (Container) new ContainerImpl();
@@ -25,6 +25,10 @@ public class string {
 		System.out.println("removeLeadingZeros " + "0000000000" + "      : " + str.removeLeadingZeros("0000000000", container));
 		System.out.println("subString          " + test + " (4,4): " + str.subString(test, 4, 4, container));
 		System.out.println("subStringP         " + test + " (8,4): " + str.subStringP(test, 8, 4, container));
+		System.out.println("trimLeft           " + test + " (8)  : " + str.trimLeft(test, 8, container));
+		System.out.println("trimLeftP          " + test + " (4)  : " + str.trimLeftP(test, 4, container));
+		System.out.println("trimRight          " + test + " (8)  : " + str.trimRight(test, 8, container));
+		System.out.println("trimRightP         " + test + " (4)  : " + str.trimRightP(test, 4, container));
 	}
 
 
@@ -111,7 +115,59 @@ public class string {
 	 * Return substring without exception if string is too short
 	 */
 	
-	public String subStringP(String str, int start, int length, Container container) throws StreamTransformationException{
-		return this.subString(str, start, length, container);
+	public String subStringP(String str, int start, int length, Container container) throws StreamTransformationException {
+		return subString(str, start, length, container);
+	}
+
+	
+	
+	/*
+	 * Trim string to length number of characters. Remove characters from left side of string.
+	 */
+	
+	public String trimLeft(String str, int length, Container container) throws StreamTransformationException {
+		int len = str.length();
+		
+		if (len > length) {
+			return str.substring(len - length);
+		} else {
+			return str;
+		}
+	}
+
+
+	
+	/*
+	 * Trim string to length number of characters. Remove characters from left side of string.
+	 */
+
+	public String trimLeftP(String str, int length, Container container) throws StreamTransformationException {
+		return trimLeft(str, length, container);
+	}
+
+
+
+	/*
+	 * Trim string to length number of characters. Remove characters from right side of string.
+	 */
+
+	public String trimRight(String str, int length, Container container) throws StreamTransformationException {
+		int len = str.length();
+		
+		if (len > length) {
+			return str.substring(0, length);
+		} else {
+			return str;
+		}
+	}
+
+	
+	
+	/*
+	 * Trim string to length number of characters. Remove characters from right side of string.
+	 */
+
+	public String trimRightP(String str, int length, Container container) throws StreamTransformationException {
+		return trimRight(str, length, container);
 	}
 }
