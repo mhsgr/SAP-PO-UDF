@@ -1,9 +1,9 @@
-package com.havemester.po.EDI_Map;
+package com.havemester.sap.po.EDI;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.havemester.po.mapping.test.ContainerImpl;
+import com.havemester.sap.po.mapping.test.ContainerImpl;
 import com.sap.aii.mapping.api.AbstractTrace;
 import com.sap.aii.mapping.api.StreamTransformationException;
 import com.sap.aii.mappingtool.tf7.rt.Container;
@@ -11,7 +11,7 @@ import com.sap.aii.mappingtool.tf7.rt.GlobalContainer;
 
 
 
-public class keyValue {
+public class EDI_Map {
 
 	public static void main(String[] args) throws Exception {
 	    // initialize container
