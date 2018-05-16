@@ -1,16 +1,16 @@
-package com.havemester.po.EDI_Node;
+package com.havemester.sap.po.EDI;
 
-import com.havemester.po.mapping.test.ContainerImpl;
-import com.havemester.po.mapping.test.TraceImpl;
+import com.havemester.sap.po.mapping.test.ContainerImpl;
+import com.havemester.sap.po.mapping.test.TraceImpl;
 import com.sap.aii.mapping.api.StreamTransformationException;
 import com.sap.aii.mappingtool.tf.rt.ResultList;
 import com.sap.aii.mappingtool.tf.rt.ResultListImpl;
 import com.sap.aii.mappingtool.tf7.rt.Container;
 
-public class node {
+public class EDI_Node {
 
 	public static void main(String[] args) throws Exception {
-		node node = new node();
+		EDI_Node node = new EDI_Node();
 		
 		// initialize container
 		Container container = (Container) new ContainerImpl();
